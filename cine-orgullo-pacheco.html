@@ -1,0 +1,153 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Orgullo Pacheco · Salvador De Anda</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Albert+Sans:wght@400;500;600&display=swap"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.wrap{width:100%;max-width:1560px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.prov{text-decoration:underline dotted var(--faint);text-underline-offset:.28em;text-decoration-thickness:1px}
+.tbc{color:var(--muted);font-style:italic;text-decoration:underline dotted var(--faint);text-underline-offset:.28em;text-decoration-thickness:1px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button{font:inherit;color:inherit}
+
+/* Formulario */
+.field{display:grid;gap:6px;margin-bottom:18px}
+.field label{font-size:.88rem;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:0;padding:12px 14px}
+.field textarea{min-height:140px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--fg);outline:none}
+.btn{display:inline-block;background:var(--fg);color:var(--bg);border:1px solid var(--fg);padding:13px 24px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--fg)}
+.btn[disabled]{opacity:.35;cursor:not-allowed}
+.note{margin:14px 0 0;color:var(--muted);font-size:.92rem}
+
+/* Agenda de ejemplo */
+.cal{border:1px solid var(--line);padding:clamp(16px,3vw,28px)}
+.cal h3{margin:0 0 4px;font:600 1.1rem/1.3 var(--body)}
+.cal .types{display:grid;gap:8px;margin:16px 0 20px;border:0;padding:0}
+.cal .types legend{padding:0;margin-bottom:8px;font-size:.88rem;color:var(--muted)}
+.cal .types label{display:flex;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);cursor:pointer}
+.cal .types input{accent-color:var(--fg)}
+.cal .types label:has(input:checked){border-color:var(--fg)}
+.cal .mhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal .mhead strong{font-weight:600;text-transform:capitalize}
+.cal .nav{background:none;border:1px solid var(--line);width:38px;height:38px;cursor:pointer}
+.cal .nav:hover:not([disabled]){border-color:var(--fg)}
+.cal .nav[disabled]{opacity:.3;cursor:default}
+.cal .grid7{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal .wd{font-size:.78rem;color:var(--muted);padding:4px 0}
+.cal .d{aspect-ratio:1;background:var(--surface);border:1px solid transparent;cursor:pointer;font-variant-numeric:tabular-nums}
+.cal .d:hover:not([disabled]){border-color:var(--fg)}
+.cal .d[disabled]{background:transparent;color:var(--faint);cursor:default}
+.cal .d[aria-pressed="true"],.cal .s[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.cal .slots{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.cal .s{background:none;border:1px solid var(--line);padding:9px 14px;cursor:pointer;font-variant-numeric:tabular-nums}
+.cal .s:hover{border-color:var(--fg)}
+.cal .sub{margin:20px 0 8px;font-size:.88rem;color:var(--muted)}
+.cal .sum{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.cal .sum p{margin:0 0 12px}
+
+/* Visor de fotos */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(10,10,10,.95);display:flex;align-items:center;justify-content:center;padding:max(56px,env(safe-area-inset-top,0px)) max(56px,env(safe-area-inset-right,0px)) max(56px,env(safe-area-inset-bottom,0px)) max(56px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:100%;object-fit:contain}
+.lb button{position:absolute;background:none;border:0;color:#fff;font-size:2.2rem;line-height:1;cursor:pointer;padding:10px 16px}
+.lb .lb-x{top:max(8px,env(safe-area-inset-top,0px));right:max(8px,env(safe-area-inset-right,0px))}
+.lb .lb-p{left:max(4px,env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb .lb-n{right:max(4px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+
+/* Aviso de borrador */
+.legend{position:fixed;left:max(12px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;gap:10px;align-items:center;background:var(--fg);color:var(--bg);font-size:.8rem;line-height:1.3;padding:8px 8px 8px 14px;max-width:calc(100vw - 24px)}
+.legend button{background:none;border:0;color:inherit;font-size:1.2rem;line-height:1;cursor:pointer;padding:2px 8px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+:root{--bg:#f3f3f3;--surface:#e6e6e6;--line:#d0d0d0;--fg:#121212;--muted:#5c5c5c;--faint:#9a9a9a;
+--display:'Bodoni Moda','Didot',Georgia,serif;--body:'Albert Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:light}
+.top .bar{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px 32px;padding-block:26px}
+.name{font:400 1.45rem/1 var(--display);text-decoration:none;color:var(--fg)}
+.top nav{display:flex;gap:6px 26px;flex-wrap:wrap}
+.top nav a{text-decoration:none;color:var(--muted);padding:4px 0;border-bottom:1px solid transparent}
+.top nav a:hover,.top nav a[aria-current=page]{color:var(--fg);border-color:var(--fg)}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.05}
+.h1{font-size:clamp(2.4rem,6vw,4.6rem)}
+.lead{font-size:clamp(1.05rem,1.5vw,1.25rem);max-width:56ch;margin:0}
+.pagehead{padding-block:clamp(16px,4vw,48px) clamp(20px,3vw,36px)}
+.hero2{display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:end;padding-block:clamp(8px,2vw,24px) clamp(40px,6vw,80px)}
+.key{margin:0;width:min(46vw,calc((100vh - 130px)*.667));min-width:0}
+.key img{width:100%;height:auto;display:block}
+.key figcaption{margin-top:10px;font-size:.9rem;color:var(--muted)}
+.intro .h1{font-size:clamp(2.4rem,5vw,4.2rem)}
+.top.over{position:absolute;inset:0 0 auto;z-index:5}
+.top.over .name,.top.over nav a,.top.over nav a:hover,.top.over nav a[aria-current=page]{color:#fff}
+.top.over nav a:hover{border-color:#fff}
+.cover{position:relative;height:100vh;height:100svh;min-height:520px;display:grid;place-items:center;background:#1a1a1a;overflow:hidden;color:#fff;text-align:center}
+.cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover::before{content:"";position:absolute;inset:0;background:rgba(10,10,10,.38);z-index:1}
+.ct2{position:relative;z-index:2;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.ct2 h1{font-size:clamp(2.8rem,9vw,8rem);line-height:1;color:#fff;text-wrap:balance}
+.ct2 p{margin:18px 0 0;font-size:clamp(1rem,1.6vw,1.2rem);color:#f3f3f3}
+.down{position:absolute;z-index:2;bottom:28px;left:50%;transform:translateX(-50%);color:#fff;text-decoration:none;border-bottom:1px solid #fff;padding-bottom:3px}
+.reel{margin:0 0 clamp(28px,4vw,48px)}
+.jump{display:flex;flex-wrap:wrap;gap:8px 26px;padding-block:14px;border-block:1px solid var(--line);margin-bottom:clamp(8px,2vw,24px)}
+.jump a{text-decoration:none;color:var(--muted)}.jump a:hover{color:var(--fg)}
+.cat{padding-top:clamp(28px,4vw,56px);scroll-margin-top:12px}
+.cat h2{font-size:clamp(1.5rem,2.6vw,2.2rem);font-style:italic;margin-bottom:16px}
+.pcards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:28px 16px}
+.pcards a{text-decoration:none;display:block}
+.pcards .ph{aspect-ratio:16/10;overflow:hidden;background:var(--surface)}
+.pcards img{width:100%;height:100%;object-fit:cover;transition:opacity .25s}
+.pcards a:hover img{opacity:.86}
+.pcards h3{font-size:1.5rem;margin:10px 0 2px}.pcards p{margin:0;color:var(--muted);font-size:.95rem}
+.empty{margin:0;padding:18px 0;border-top:1px dashed var(--line)}
+.back{margin:0 0 14px;font-size:.95rem}.back a{color:var(--muted);text-underline-offset:.3em}
+.pmeta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px 28px;margin:0 0 clamp(24px,4vw,44px);padding-block:18px;border-block:1px solid var(--line)}
+.pmeta dt{font-size:.82rem;color:var(--muted)}.pmeta dd{margin:2px 0 0}
+.pnav{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-block:32px clamp(48px,7vw,96px);border-top:1px solid var(--line)}
+.pnav a{text-decoration:none}.pnav small{display:block;color:var(--muted)}.pnav .n{font:400 clamp(1.4rem,2.6vw,2rem)/1.1 var(--display);font-style:italic}
+.rows{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(48px,7vw,96px)}
+.rows a{display:block;flex:var(--r) 1 calc(var(--r)*230px);min-width:0;background:var(--surface)}
+.rows img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .25s}
+.rows a:hover img{opacity:.86}
+.rows.few::after{display:none}
+.rows::after{content:"";flex:30 1 0}
+.sechead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:clamp(32px,5vw,64px) 0 16px}
+.sechead h2{font-size:clamp(1.5rem,2.6vw,2.2rem);font-style:italic}
+.sechead a{color:var(--muted);text-underline-offset:.3em}
+.films{list-style:none;margin:0 0 clamp(56px,8vw,112px);padding:0;display:grid;gap:clamp(36px,5vw,64px)}
+.film{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(18px,3vw,48px);align-items:end}
+.vslot{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--surface);margin:0}
+.vslot img{width:100%;height:100%;object-fit:cover}
+.vslot .tag{position:absolute;left:14px;bottom:14px;background:rgba(243,243,243,.9);padding:8px 14px;font-size:.9rem}
+.film h3{font-size:clamp(1.6rem,2.6vw,2.2rem);margin-bottom:6px}
+.film dl{margin:14px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:.95rem}
+.film dt{color:var(--muted)}.film dd{margin:0}
+.about{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(24px,5vw,80px);padding-bottom:clamp(56px,8vw,112px)}
+.about .ph{aspect-ratio:4/5;background:var(--surface);overflow:hidden}
+.about img{width:100%;height:100%;object-fit:cover}
+.about p{max-width:58ch;margin:0 0 1.1em}
+.kit{margin:28px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.kit li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.kit span:first-child{color:var(--muted)}
+.ct{max-width:560px;padding-bottom:clamp(56px,8vw,112px)}
+.direct{list-style:none;margin:0 0 32px;padding:0;display:grid;gap:6px}
+.direct b{font-weight:500;color:var(--muted);margin-right:8px}
+footer.foot{border-top:1px solid var(--line);padding-block:26px 56px;color:var(--muted);font-size:.9rem}
+footer.foot .wrap{display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between}
+@media (max-width:760px){.pmeta{grid-template-columns:1fr 1fr}.hero2{grid-template-columns:minmax(0,1fr)}.key{width:100%}.film,.about{grid-template-columns:minmax(0,1fr)}.rows a{flex-basis:calc(var(--r)*120px)}}
+</style></head><body><header class="top"><div class="wrap bar"><a class="name" href="index.html">Salvador De Anda</a><nav aria-label="Principal"><a href="fotografia.html">fotografía</a><a href="cinematografia.html" aria-current="page">cinematografía</a><a href="sobre-mi.html">sobre mí</a><a href="contacto.html">contacto</a></nav></div></header><main><article class="wrap"><div class="pagehead"><p class="back"><a href="cinematografia.html#comercial">← Cinematografía · Comercial</a></p><h1 class="h1">Orgullo Pacheco</h1></div>
+<dl class="pmeta"><div><dt>Categoría</dt><dd>Comercial</dd></div><div><dt>Mi rol</dt><dd>Director de fotografía, junto con Andrés Valle</dd></div><div><dt>Productora</dt><dd>Galac Films</dd></div></dl>
+<div class="rows"><a href="img/031-123.jpg" data-lb style="--r:0.666"><img src="img/031-123.jpg" width="933" height="1400" alt="Orgullo Pacheco, foto 1" loading="lazy" decoding="async"></a><a href="img/032-125.jpg" data-lb style="--r:0.667"><img src="img/032-125.jpg" width="800" height="1200" alt="Orgullo Pacheco, foto 2" loading="lazy" decoding="async"></a><a href="img/032-126.jpg" data-lb style="--r:0.666"><img src="img/032-126.jpg" width="933" height="1400" alt="Orgullo Pacheco, foto 3" loading="lazy" decoding="async"></a><a href="img/032-129.jpg" data-lb style="--r:0.666"><img src="img/032-129.jpg" width="933" height="1400" alt="Orgullo Pacheco, foto 4" loading="lazy" decoding="async"></a><a href="img/032-130.jpg" data-lb style="--r:0.666"><img src="img/032-130.jpg" width="933" height="1400" alt="Orgullo Pacheco, foto 5" loading="lazy" decoding="async"></a></div>
+<nav class="pnav" aria-label="Otros proyectos"><a href="cine-imbalance.html"><small>Anterior</small><span class="n">IMBALANCE</span></a><a href="cine-volver.html" style="text-align:right"><small>Siguiente</small><span class="n">Volver</span></a></nav></article></main><footer class="foot"><div class="wrap"><span>© Salvador De Anda 2026</span><span>Instagram <a href="https://www.instagram.com/salvadorav.foto" target="_blank" rel="noopener">@salvadorav.foto</a></span><span>Correo <a href="mailto:galacfilms@gmail.com">galacfilms@gmail.com</a></span></div></footer>
+<div class="legend" role="note"><span>Borrador de diseño. Subrayado punteado: texto provisional o dato por confirmar.</span><button type="button" aria-label="Cerrar aviso">×</button></div><script>(function(){var l=document.querySelector('.legend');if(!l)return;l.querySelector('button').onclick=function(){l.hidden=true}})();(function(){var items=[].slice.call(document.querySelectorAll('a[data-lb]'));if(!items.length)return;
+var box=document.createElement('div');box.className='lb';box.hidden=true;box.setAttribute('role','dialog');box.setAttribute('aria-modal','true');box.setAttribute('aria-label','Galería');
+box.innerHTML='<button class="lb-x" type="button" aria-label="Cerrar">×</button><button class="lb-p" type="button" aria-label="Anterior">‹</button><img alt=""><button class="lb-n" type="button" aria-label="Siguiente">›</button>';
+document.body.appendChild(box);var img=box.querySelector('img'),i=0,last=null;
+function go(k){i=(k+items.length)%items.length;img.src=items[i].getAttribute('href');img.alt=items[i].querySelector('img').alt}
+function open(k){last=document.activeElement;go(k);box.hidden=false;document.documentElement.style.overflow='hidden';box.querySelector('.lb-x').focus()}
+function close(){box.hidden=true;document.documentElement.style.overflow='';if(last)last.focus()}
+items.forEach(function(a,k){a.addEventListener('click',function(e){e.preventDefault();open(k)})});
+box.addEventListener('click',function(e){if(e.target===box)close()});
+box.querySelector('.lb-x').onclick=close;box.querySelector('.lb-p').onclick=function(){go(i-1)};box.querySelector('.lb-n').onclick=function(){go(i+1)};
+document.addEventListener('keydown',function(e){if(box.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')go(i-1);if(e.key==='ArrowRight')go(i+1)});})();</script></body></html>
